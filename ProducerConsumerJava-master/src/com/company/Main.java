@@ -1,47 +1,27 @@
 package com.company;
 
-import java.util.Random;
-
 public class Main {
 
     public static void main(String[] args) {
         Main main = new Main();
         int storageSize = 10;
         int itemNumbers = 30;
+
         main.starter(storageSize, itemNumbers);
     }
+    int cColl= 4;
+    int pColl = 5;
+    int[] carray ={5,7,8,10};
+    int[] parray ={5,7,8,6,4};
 
     private void starter(int storageSize, int itemNumbers) {
-        Manager manager = new Manager(storageSize);
-        int itemProd =0;
-        int itemCons =0;
-
         int i=0;
-        while (itemProd<itemNumbers){
-            int col=(int)Math.round(Math.random()*storageSize);
-            if (itemNumbers-itemProd>col){
-                new  Producer(col,manager,i);
-                itemProd+=col;
-            }
-            else {
-                new  Producer(itemNumbers-itemProd,manager,i);
-                break;
-            }
-            i+=1;
-            if(i==20){break;}
+        Manager manager = new Manager(storageSize);
+        for ( i=0;i<pColl;i++){
+            new Producer(parray[i],manager,i);
         }
-        while (itemCons<itemNumbers){
-            int col=(int)Math.round(Math.random()*storageSize);
-            if (itemNumbers-itemCons>col){
-                new  Consumer(col,manager,i);
-                itemCons+=col;
-            }
-            else {
-                new  Consumer(itemCons-itemProd,manager,i);
-                break;
-            }
-            i+=1;
-            if(i==20){break;}
+        for ( i=0;i<cColl;i++){
+            new Consumer(carray[i],manager,i);
         }
     }
 }
