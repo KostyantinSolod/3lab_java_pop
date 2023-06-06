@@ -12,7 +12,7 @@ public class Main {
     int cColl= 4;
     int pColl = 5;
     int[] carray ={5,7,8,10};
-    int[] parray ={5,7,8,6,4};
+    int[] parray ={7,5,8,6,4};
 
     private void starter(int storageSize, int itemNumbers) {
         int i=0;
